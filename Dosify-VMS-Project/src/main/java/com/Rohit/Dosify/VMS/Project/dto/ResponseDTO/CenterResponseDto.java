@@ -1,5 +1,7 @@
 package com.Rohit.Dosify.VMS.Project.dto.ResponseDTO;
 
+
+import com.Rohit.Dosify.VMS.Project.Enum.CenterType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -8,15 +10,11 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-public class UserResponseDTO {
-
+public class CenterResponseDto {
 
     String name;
 
-    String message;
+    String location;
 
-
-
-
-
+    CenterType centerType;
 }

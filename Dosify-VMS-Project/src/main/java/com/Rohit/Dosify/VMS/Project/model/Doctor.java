@@ -3,10 +3,7 @@ package com.Rohit.Dosify.VMS.Project.model;
 
 import com.Rohit.Dosify.VMS.Project.Enum.Gender;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
@@ -18,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "doctor")
+@Builder
 public class Doctor {
 
     @Id
@@ -31,7 +29,7 @@ public class Doctor {
     int age;
 
     @Column(name = "email_id",unique = true,nullable = false)
-    String email_id;
+    String emailId;
 
     @Column(name = "mobile_no",unique = true,nullable = false)
     String mobNo;

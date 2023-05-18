@@ -5,6 +5,7 @@ import com.Rohit.Dosify.VMS.Project.dto.ResponseDTO.UserResponseDTO;
 import com.Rohit.Dosify.VMS.Project.model.User;
 import com.Rohit.Dosify.VMS.Project.repository.UserRepository;
 import com.Rohit.Dosify.VMS.Project.service.UserService;
+import com.Rohit.Dosify.VMS.Project.transformer.UserTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,20 +20,30 @@ public class UserServiceImp implements UserService {
     public UserResponseDTO addUser(UserRequestDTO userRequestDTO) {
 
         //convert request DTO to entity
-        User user = new User();
-        user.setName(userRequestDTO.getName());
-        user.setAge(userRequestDTO.getAge());
-        user.setEmailId(userRequestDTO.getEmailId());
-        user.setMobNo(userRequestDTO.getMobNo());
-        user.setGender(userRequestDTO.getGender());
+//        User user = new User();
+//        user.setName(userRequestDTO.getName());
+//        user.setAge(userRequestDTO.getAge());
+//        user.setEmailId(userRequestDTO.getEmailId());
+//        user.setMobNo(userRequestDTO.getMobNo());
+//        user.setGender(userRequestDTO.getGender());
+
+
+        //user object using builder
+        User user = UserTransformer.UserRequestDtoToUser(userRequestDTO);
+
 
         //save the entity to the db
         User savedUser = userRepository.save(user);
 
         //convert entity to response DTO
-        UserResponseDTO userResponseDTO = new UserResponseDTO();
-        userResponseDTO.setName(savedUser.getName());
-        userResponseDTO.setMessage("Congrats! You have registered on Dosify");
+//        UserResponseDTO userResponseDTO = new UserResponseDTO();
+//        userResponseDTO.setName(savedUser.getName());
+//        userResponseDTO.setMessage("Congrats! You have registered on Dosify");
+
+        //userResponse object using builder
+        UserResponseDTO userResponseDTO = UserTransformer.UserToUserResponseDto(savedUser);
+
+
 
         return userResponseDTO;
 

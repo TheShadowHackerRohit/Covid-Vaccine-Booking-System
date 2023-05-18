@@ -2,10 +2,7 @@ package com.Rohit.Dosify.VMS.Project.model;
 
 import com.Rohit.Dosify.VMS.Project.Enum.Gender;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "user")
+@Builder
 public class User {
 
     @Id

@@ -3,10 +3,7 @@ package com.Rohit.Dosify.VMS.Project.model;
 
 import com.Rohit.Dosify.VMS.Project.Enum.CenterType;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.print.Doc;
@@ -19,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "vaccination_center")
+@Builder
 public class VaccinationCenter {
 
     @Id
