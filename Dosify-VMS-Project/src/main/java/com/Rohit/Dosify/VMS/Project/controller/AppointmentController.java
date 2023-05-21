@@ -27,5 +27,9 @@ public class AppointmentController {
 
     }
 
+    // generate certificate
+    // -> One dose
+    // -> Both dose
+
 
 }

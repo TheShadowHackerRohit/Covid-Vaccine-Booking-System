@@ -32,5 +32,12 @@ public class DoctorController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
+        // get all the doctors who have more than 10 appointment
+
+        // get all the male doctors whose age is above 40
+
+        // get the ratio of male to female doctors
+
+        //update the details based on email id of the doctor
     }
 }

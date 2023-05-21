@@ -26,4 +26,18 @@ public class UserController {
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 
     }
+
+    // find by emailid
+
+    // update the name of the user mobno
+
+    // all the users who have not taken even a single dose
+
+    // all users who have taken does1 but not dose2
+
+    // all users who are fully vaccinated.
+
+    // all male users who have not taken even a single vaccine
+
+    // all female users who are fully vaccinated
 }
