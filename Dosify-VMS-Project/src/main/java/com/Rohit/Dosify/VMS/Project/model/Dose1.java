@@ -26,6 +26,7 @@ public class Dose1 {
     String doseId;
 
     @Column(name = "vaccine_type")
+    @Enumerated
     VaccineType vaccineType;
 
     @Column(name = "vaccination_date")

@@ -5,9 +5,11 @@ import com.Rohit.Dosify.VMS.Project.model.Dose1;
 import com.Rohit.Dosify.VMS.Project.model.Dose2;
 import com.Rohit.Dosify.VMS.Project.model.User;
 import com.Rohit.Dosify.VMS.Project.service.Dose2Service;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class Dose2ServiceImpl implements Dose2Service {
 
 

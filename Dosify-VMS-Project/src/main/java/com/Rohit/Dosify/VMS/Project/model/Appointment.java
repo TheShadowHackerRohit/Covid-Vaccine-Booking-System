@@ -3,10 +3,7 @@ package com.Rohit.Dosify.VMS.Project.model;
 
 import com.Rohit.Dosify.VMS.Project.Enum.DoseNo;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -18,6 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "appointment")
+@Builder
 public class Appointment {
 
 

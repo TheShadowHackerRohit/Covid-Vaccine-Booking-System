@@ -4,9 +4,11 @@ import com.Rohit.Dosify.VMS.Project.Enum.VaccineType;
 import com.Rohit.Dosify.VMS.Project.model.Dose1;
 import com.Rohit.Dosify.VMS.Project.model.User;
 import com.Rohit.Dosify.VMS.Project.service.Dose1Service;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class Dose1ServiceImpl implements Dose1Service {
 
 
