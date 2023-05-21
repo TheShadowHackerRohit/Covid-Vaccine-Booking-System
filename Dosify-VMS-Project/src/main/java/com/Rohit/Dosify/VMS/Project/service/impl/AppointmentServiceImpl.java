@@ -13,6 +13,7 @@ import com.Rohit.Dosify.VMS.Project.repository.UserRepository;
 import com.Rohit.Dosify.VMS.Project.service.AppointmentService;
 import com.Rohit.Dosify.VMS.Project.service.Dose1Service;
 import com.Rohit.Dosify.VMS.Project.service.Dose2Service;
+import com.Rohit.Dosify.VMS.Project.transformer.AppointmentTransformer;
 import com.Rohit.Dosify.VMS.Project.transformer.CenterTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -77,12 +78,8 @@ public class AppointmentServiceImpl implements AppointmentService {
            user.setDose2(dose2);
 
        }
-        Appointment appointment = Appointment.builder()
-                .appointmentNo(String.valueOf(UUID.randomUUID()))
-                .doseNo(appointmentRequestDto.getDoseNo())
-                .user(user)
-                .doctor(doctor)
-                .build();
+
+        Appointment appointment = AppointmentTransformer.modelsToAppointment(appointmentRequestDto,user,doctor);
 
 
        user.getAppointments().add(appointment);
@@ -97,8 +94,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         //send email
 
-
-
             String text = "Congrats !"+ user.getName()+ " Your dose "+ appointmentRequestDto.getDoseNo() +" has been booked";
 
             SimpleMailMessage message = new SimpleMailMessage();
@@ -109,22 +104,9 @@ public class AppointmentServiceImpl implements AppointmentService {
             emailSender.send(message);
 
 
-
         //prepare response dto
 
-        CenterResponseDto centerResponseDto = CenterTransformer.CenterToCenterResponse(doctor.getVaccinationCenter());
-
-
-        AppointmentResponseDto appointmentResponseDto = AppointmentResponseDto.builder()
-                .userName(user.getName())
-                .appointmentNo(appointment.getAppointmentNo())
-                .dateOfAppointment(savedAppointment.getDateOfAppointment())
-                .doseNo(appointment.getDoseNo())
-                .centerResponseDto(centerResponseDto)
-                .doctorName(doctor.getName())
-                .vaccineType(appointmentRequestDto.getVaccineType())
-                .build();
-
+        AppointmentResponseDto appointmentResponseDto = AppointmentTransformer.modelsToAppointmentResponseDto(doctor,user,appointment,savedAppointment,appointmentRequestDto);
 
 
         return appointmentResponseDto;
