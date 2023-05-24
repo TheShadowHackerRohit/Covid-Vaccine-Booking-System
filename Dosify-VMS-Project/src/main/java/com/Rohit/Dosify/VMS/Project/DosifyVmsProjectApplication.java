@@ -8,6 +8,7 @@ public class DosifyVmsProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DosifyVmsProjectApplication.class, args);
+
 	}
 
 }

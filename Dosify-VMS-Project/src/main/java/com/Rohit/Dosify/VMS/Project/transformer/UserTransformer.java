@@ -23,4 +23,25 @@ public class UserTransformer {
                 .message("Congrats! You have registered on Dosify")
                 .build();
     }
+
+    public static UserResponseDTO UserToEmailUserResponseDto(User user){
+
+        String str = "";
+        if(user.isDose2Taken()){
+            str = "Both dose  has been taken";
+        } else if (user.isDose1Taken()) {
+            str ="Dose 1 has been taken";
+        } else if (!user.isDose1Taken()) {
+            str = "No dose has been taken yet";
+
+        }
+
+        return UserResponseDTO.builder()
+                .name(user.getName())
+                .age(user.getAge())
+                .mobNo(user.getMobNo())
+                .gender(user.getGender())
+                .message(str)
+                .build();
+    }
 }

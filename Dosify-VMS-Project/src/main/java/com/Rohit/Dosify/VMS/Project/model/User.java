@@ -18,6 +18,7 @@ import java.util.List;
 @Builder
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;

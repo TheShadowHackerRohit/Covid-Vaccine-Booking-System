@@ -48,7 +48,6 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public AppointmentResponseDto bookAppointment(AppointmentRequestDto appointmentRequestDto) throws UserNotFound, DoctorNotFound, NotEligibleForDoseException {
 
-
        Optional<User> userOptional =  userRepository.findById(appointmentRequestDto.getUserId());
        if (userOptional.isEmpty()){
            throw new UserNotFound("USer Not Found");
@@ -66,7 +65,6 @@ public class AppointmentServiceImpl implements AppointmentService {
            Dose1 dose1 = dose1Service.createDose1(user,appointmentRequestDto.getVaccineType());
            user.setDose1Taken(true);
            user.setDose1(dose1);
-
        }
        else{
            if(!user.isDose1Taken()){
@@ -90,19 +88,14 @@ public class AppointmentServiceImpl implements AppointmentService {
         doctor.getAppointments().add(savedAppointment);
         doctorRepository.save(doctor);
 
-
-
         //send email
-
             String text = "Congrats !"+ user.getName()+ " Your dose "+ appointmentRequestDto.getDoseNo() +" has been booked";
-
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("rohitsahume0104@gmail.com");
             message.setTo(user.getEmailId());
             message.setSubject("Appointment Booked !!!!");
             message.setText(text);
             emailSender.send(message);
-
 
         //prepare response dto
 
